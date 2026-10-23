@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DeployConf // DevOps Conference Registration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<!-- FAVICON: place favicon.png (and optionally apple-touch-icon.png) in the
+     project root, next to index.html. Swap the href values below if you
+     name the files differently. -->
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+</head>
+<body>
+
+<div class="bg-grid" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="shell">
+    <div class="logo">
+      <span class="logo-mark">&#9671;</span>
+      <span>DeployConf <span class="logo-sub">/<span class="js-year-short">25</span></span></span>
+    </div>
+    <div class="header-meta">Lagos &middot; March 14&ndash;15</div>
+  </div>
+</header>
+
+<main class="shell hero-grid">
+
+  <section class="hero-copy">
+    <h1>Provision your seat at the conference for people who run <span class="rotating-word" id="rotating-word">production</span></h1>
+    <p class="lede">
+      Two days of talks on CI/CD pipelines, Kubernetes at scale, and infrastructure
+      that doesn't page you at 3am. Register below and we'll generate your pass instantly.
+    </p>
+
+    <dl class="hero-stats">
+      <div>
+        <dt>Format</dt>
+        <dd>In-person, 2 tracks</dd>
+      </div>
+      <div>
+        <dt>Capacity</dt>
+        <dd>400 engineers</dd>
+      </div>
+      <div>
+        <dt>Cost</dt>
+        <dd>Free with registration</dd>
+      </div>
+    </dl>
+  </section>
+
+  <section class="manifest-panel" aria-label="Live registration preview">
+    <div class="manifest-header">
+      <div class="manifest-dots"><span></span><span></span><span></span></div>
+      <span class="manifest-filename">registration.yaml</span>
+    </div>
+    <pre class="manifest-body"><code><span class="tok-key">apiVersion</span>: <span class="tok-str">deployconf/v1</span>
+<span class="tok-key">kind</span>: <span class="tok-str">Attendee</span>
+<span class="tok-key">spec</span>:
+  <span class="tok-key">name</span>: <span class="tok-str" id="preview-name">null</span>
+  <span class="tok-key">email</span>: <span class="tok-str" id="preview-email">null</span>
+  <span class="tok-key">role</span>: <span class="tok-str" id="preview-role">unset</span>
+  <span class="tok-key">status</span>: <span class="tok-comment" id="preview-status"># pending</span></code></pre>
+  </section>
+
+  <section class="form-panel" aria-label="Registration form">
+    <div class="form-panel-header">
+      <h2>Register for the conference</h2>
+      <p>Submitting applies your attendee manifest to the cluster.</p>
+    </div>
+
+    <form id="register-form" novalidate>
+      <div class="field">
+        <label for="fullName">Full name</label>
+        <input type="text" id="fullName" name="fullName" autocomplete="name" placeholder="Ada Lovelace" required>
+      </div>
+
+      <div class="field">
+        <label for="email">Email address</label>
+        <input type="email" id="email" name="email" autocomplete="email" placeholder="ada@example.com" required>
+      </div>
+
+      <div class="field">
+        <label for="techRole">Tech role</label>
+        <select id="techRole" name="techRole" required>
+          <option value="" disabled selected>Select your role</option>
+          <option value="DevOps Engineer">DevOps Engineer</option>
+          <option value="Cloud Architect">Cloud Architect</option>
+          <option value="Software Engineer">Software Engineer</option>
+          <option value="System Administrator">System Administrator</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <button type="submit" id="submit-btn">
+        <span class="btn-label">Register for conference</span>
+        <span class="btn-spinner" aria-hidden="true"></span>
+      </button>
+
+      <div id="form-status" class="form-status" role="status" aria-live="polite"></div>
+    </form>
+  </section>
+
+  <section class="host-panel" aria-label="Event host">
+    <div class="host-card">
+      <!-- HOST PHOTO: set the src below to your picture's path, e.g.
+           "assets/host-photo.jpg". Keep the file reasonably small
+           (under ~300KB) so the page stays fast. -->
+      <img
+        src="assets/host-photo.jpg"
+        alt="Nwachukwu Jesse, DeployConf host"
+        class="host-photo"
+        id="host-photo"
+      >
+      <div class="host-info">
+        <p class="host-label">Hosted by</p>
+        <h3 class="host-name">Nwachukwu Jesse</h3>
+        <p class="host-role">DevOps Engineer &amp; Event Host</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="shell">
+    <span>DeployConf <span class="js-year-full">2025</span></span>
+    <span>Built for engineers who read the logs</span>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
